@@ -6,6 +6,26 @@
 <title>Bijouterie Derridj</title>
 
 <style>
+.avis{
+padding:60px;
+text-align:center;
+background:#111;
+}
+
+.avis h2{
+font-size:40px;
+color:#b8860b;
+margin-bottom:30px;
+}
+
+.avis-box{
+background:#b8860b;
+padding:20px;
+margin:15px auto;
+max-width:700px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
 #langue{
 position:fixed;
 top:20px;
@@ -207,7 +227,85 @@ font-size:32px;
 font-weight:bold;
 }
 
+/* ===== Fond avec motifs berbères ===== */
+body{
+background:#f4f1ea;
+position:relative;
+}
 
+body::before{
+content:"ⵣ";
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:700px;
+font-weight:bold;
+color:rgba(212,175,55,0.15); 
+pointer-events:none;
+z-index:-1;
+}
+body{
+background-color:#f4f1ea;
+background-image:
+url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Ctext x='30' y='80' font-size='50' fill='%23d4af37' fill-opacity='0.15'%3E%E2%B5%A3%3C/text%3E%3C/svg%3E");
+background-repeat:repeat;
+}
+
+/* ===== Animation du titre ===== */
+header h1{
+animation:brillance 3s infinite;
+}
+
+@keyframes brillance{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
+}
+
+/* ===== Apparition douce des cartes ===== */
+.card{
+opacity:0;
+animation:apparition 1s forwards;
+}
+
+.card:nth-child(1){animation-delay:0.2s;}
+.card:nth-child(2){animation-delay:0.4s;}
+.card:nth-child(3){animation-delay:0.6s;}
+.card:nth-child(4){animation-delay:0.8s;}
+
+@keyframes apparition{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+.dark{
+background:#111 !important;
+color:white !important;
+}
+
+.dark .card{
+background:#222;
+color:white;
+}
+
+.dark .avis-box{
+background:#333;
+color:white;
+}
+}
+.favori{
+font-size:35px;
+cursor:pointer;
+display:block;
+text-align:right;
+padding:10px;
+}
 </style>
 
 </head>
@@ -218,6 +316,8 @@ font-weight:bold;
     <option value="tz">ⵣ Tamazight</option>
     <option value="en">🇬🇧 English</option>
 </select>
+
+<button onclick="modeSombre()">🌙 Mode sombre</button>
 
 <header>
 <h1 id="titre">💎 Bijouterie Derridj 💎</h1>
@@ -235,9 +335,10 @@ font-weight:bold;
 <h3 id="prod1">El Khamssa Kabyle en décoration murale</h3>
 <p id="desc1">Bijoux traditionnels sans émail.</p>
 <p class="prix">?????? DA</p>
-
+<span id="fav1" class="favori" onclick="favori(this,'fav1')">🤍</span>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
 <button id="btn1">Acheter maintenant</button>
+
 
 </a>
 </div>
@@ -247,9 +348,10 @@ font-weight:bold;
 <h3 id="prod2">Bague élégante sans émail (Détail Avrouche)</h3>
 <p id="desc2">Bague traditionnelle sans émail.</p>
 <p class="prix">?????? DA</p>
-
+<span id="fav2" class="favori" onclick="favori(this,'fav2')">🤍</span>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
 <button id="btn2">Acheter maintenant</button>
+
 
 </a>
 </div>
@@ -260,8 +362,10 @@ font-weight:bold;
 <h3 id="prod3">Pack sans émail</h3>
 <p id="desc3">Collection de bijoux sublime.</p>
 <p class="prix">?????? DA</p>
+<span id="fav3" class="favori" onclick="favori(this,'fav3')">🤍</span>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
 <button id="btn3">Acheter maintenant</button>
+
 
 </a>
 </div>
@@ -271,8 +375,10 @@ font-weight:bold;
 <h3 id="prod4">Différentes bagues</h3>
 <p id="desc4">Création artisanale originale.</p>
 <p class="prix">?????? DA</p>
+<span id="fav4" class="favori" onclick="favori(this,'fav4')">🤍</span>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
 <button id="btn4">Acheter maintenant</button>
+<span id="fav4" class="favori" onclick="favori(this,'fav4')">🤍</span>
 
 </a>
 </div>
@@ -288,7 +394,25 @@ font-weight:bold;
 <p id="aproposTexte">
 Bienvenue chez Bijouterie Derridj. Nous créons et vendons des bijoux artisanaux inspirés du patrimoine algérien, avec des designs élégants et authentiques.
 </p>
+<section class="avis">
+<h2>⭐ Avis Clients</h2>
 
+<div class="avis-box">
+<p>"Très beaux bijoux, travail magnifique !" ⭐⭐⭐⭐⭐</p>
+<h4>- Sarah</h4>
+</div>
+
+<div class="avis-box">
+<p>"Livraison rapide et bijoux de qualité." ⭐⭐⭐⭐⭐</p>
+<h4>- Lina</h4>
+</div>
+
+<div class="avis-box">
+<p>"Je recommande fortement Bijouterie Derridj." ⭐⭐⭐⭐⭐</p>
+<h4>- Yacine</h4>
+</div>
+
+</section>
 
 <footer>
 
@@ -297,7 +421,11 @@ Bienvenue chez Bijouterie Derridj. Nous créons et vendons des bijoux artisanaux
 <p id="telephone">Téléphone : <strong>0555728176</strong></p>
 <a href="https://www.google.com/maps/place/DERRIDJ+Atelier-Bijouterie/@36.7135652,4.0482841,17z/data=!3m1!4b1!4m6!3m5!1s0x128dc700006d448d:0xf0063699a99849b6!8m2!3d36.7135652!4d4.0482841!16s%2Fg%2F11vz54646y?entry=ttu&g_ep=EgoyMDI2MDYyMy4wIKXMDSoASAFQAw%3D%3D"
 <button id="btn5">emplacement</button>
+<p><a href="https://www.facebook.com/profile.php?id=61559749852095" target="_blank">📘 Facebook</a></p>
 
+<p><a href="https://www.instagram.com/bijouteriederridj/" target="_blank">📸 Instagram</a></p>
+
+<p><a href="https://www.tiktok.com/@bijouterie.derridj" target="_blank">🎵 TikTok</a></p>
 </footer>
 </section>
 <script>
@@ -412,8 +540,35 @@ document.getElementById("aproposTitre").innerHTML="About Us";
 document.getElementById("contactTitre").innerHTML="📞 Contact";
 document.getElementById("telephone").innerHTML="Phone: <strong>0555728176</strong>";
 }
+}
+function modeSombre(){
+document.body.classList.toggle("dark");
+}
+
+function favori(element,id){
+
+if(localStorage.getItem(id)=="oui"){
+localStorage.removeItem(id);
+element.innerHTML="🤍";
+}else{
+localStorage.setItem(id,"oui");
+element.innerHTML="❤️";
+}
 
 }
+
+window.onload=function(){
+
+for(let i=1;i<=4;i++){
+
+if(localStorage.getItem("fav"+i)=="oui"){
+document.getElementById("fav"+i).innerHTML="❤️";
+}
+
+}
+
+}
+
 </script>
 </body>
 </html>
