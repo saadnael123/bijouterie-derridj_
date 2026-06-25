@@ -6,6 +6,18 @@
 <title>Bijouterie Derridj</title>
 
 <style>
+#langue{
+position:fixed;
+top:20px;
+right:20px;
+padding:10px;
+border-radius:10px;
+font-size:16px;
+font-weight:bold;
+background:white;
+border:2px solid gold;
+z-index:1000;
+}
 
 *{
 margin:0;
@@ -208,56 +220,59 @@ font-weight:bold;
 </select>
 
 <header>
-<h1>💎 Bijouterie Derridj 💎</h1>
-<p>Bijoux traditionnels kabyle d'exception</p>
+<h1 id="titre">💎 Bijouterie Derridj 💎</h1>
+<p id="slogan">Bijoux traditionnels kabyles d'exception</p>
 </header>
 
 <section class="produits">
 
-<h2>Nos Collections</h2>
+<h2 id="collections">Nos Collections</h2>
 
 <div class="container">
 
 <div class="card">
 <img src="img 1.png">
-<h3> El Khamssa Kabyle en decoration murale </h3>
-<p>Bijoux traditionnels sans emaille.</p>
+<h3 id="prod1">El Khamssa Kabyle en décoration murale</h3>
+<p id="desc1">Bijoux traditionnels sans émail.</p>
 <p class="prix">?????? DA</p>
+
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
-<button>Acheter maintenant</button>
+<button id="btn1">Acheter maintenant</button>
 
 </a>
 </div>
 
 <div class="card">
 <img src="img 2.png">
-<h3>Bague elegante sans emaille (Detaille Avrouche)</h3>
-<p>Bague traditionnels sans emaille.</p>
+<h3 id="prod2">Bague élégante sans émail (Détail Avrouche)</h3>
+<p id="desc2">Bague traditionnelle sans émail.</p>
 <p class="prix">?????? DA</p>
+
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
-<button>Acheter maintenant</button>
+<button id="btn2">Acheter maintenant</button>
 
 </a>
 </div>
 
+
 <div class="card">
 <img src="img 3.png">
-<h3>Pack sans emaille</h3>
-<p>Collection de Bijoux Sublime.</p>
+<h3 id="prod3">Pack sans émail</h3>
+<p id="desc3">Collection de bijoux sublime.</p>
 <p class="prix">?????? DA</p>
-<button onclick="ajouterAuPanier()">Ajouter au panier</button>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
+<button id="btn3">Acheter maintenant</button>
 
 </a>
 </div>
 
 <div class="card">
 <img src="img 4.png">
-<h3>Diferentes Bagues </h3>
-<p>Création artisanale originale.</p>
+<h3 id="prod4">Différentes bagues</h3>
+<p id="desc4">Création artisanale originale.</p>
 <p class="prix">?????? DA</p>
-<button onclick="ajouterAuPanier()">Ajouter au panier</button>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
+<button id="btn4">Acheter maintenant</button>
 
 </a>
 </div>
@@ -268,24 +283,22 @@ font-weight:bold;
 
 <section class="apropos">
 
-<h2>À propos</h2>
+<h2 id="aproposTitre">À propos</h2>
 
-<p>
+<p id="aproposTexte">
 Bienvenue chez Bijouterie Derridj. Nous créons et vendons des bijoux artisanaux inspirés du patrimoine algérien, avec des designs élégants et authentiques.
 </p>
 
 
-
 <footer>
 
-<h3>📞 Contact</h3>
+<h3 id="contactTitre">📞 Contact</h3>
 
-<p>Téléphone : <strong>0555728176</strong></p>
+<p id="telephone">Téléphone : <strong>0555728176</strong></p>
 
 </footer>
 </section>
 <script>
-
 function changerLangue() {
 
 let langue = document.getElementById("langue").value;
@@ -293,25 +306,112 @@ let langue = document.getElementById("langue").value;
 if(langue=="fr"){
 document.getElementById("titre").innerHTML="💎 Bijouterie Derridj 💎";
 document.getElementById("slogan").innerHTML="Bijoux traditionnels kabyles d'exception";
+document.getElementById("collections").innerHTML="Nos Collections";
+document.getElementById("prod1").innerHTML="El Khamssa Kabyle en décoration murale";
+document.getElementById("desc1").innerHTML="Bijoux traditionnels sans émail.";
+
+document.getElementById("prod2").innerHTML="Bague élégante sans émail (Détail Avrouche)";
+document.getElementById("desc2").innerHTML="Bague traditionnelle sans émail.";
+
+document.getElementById("prod3").innerHTML="Pack sans émail";
+document.getElementById("desc3").innerHTML="Collection de bijoux sublime.";
+
+document.getElementById("prod4").innerHTML="Différentes bagues";
+document.getElementById("desc4").innerHTML="Création artisanale originale.";
+
+document.getElementById("btn1").innerHTML="Acheter maintenant";
+document.getElementById("btn2").innerHTML="Acheter maintenant";
+document.getElementById("btn3").innerHTML="Acheter maintenant";
+document.getElementById("btn4").innerHTML="Acheter maintenant";
+
+document.getElementById("aproposTexte").innerHTML="Bienvenue chez Bijouterie Derridj. Nous créons et vendons des bijoux artisanaux inspirés du patrimoine algérien, avec des designs élégants et authentiques.";
+document.getElementById("aproposTitre").innerHTML="À propos";
+document.getElementById("contactTitre").innerHTML="📞 Contact";
+document.getElementById("telephone").innerHTML="Téléphone : <strong>0555728176</strong>";
 }
 
 if(langue=="ar"){
 document.getElementById("titre").innerHTML="💎 مجوهرات دريج 💎";
 document.getElementById("slogan").innerHTML="مجوهرات قبائلية تقليدية مميزة";
+document.getElementById("collections").innerHTML="مجموعاتنا";
+document.getElementById("slogan").innerHTML="مجوهرات قبائلية تقليدية مميزة";
+document.getElementById("prod1").innerHTML="الخميسة القبائلية للزينة الجدارية";
+document.getElementById("desc1").innerHTML="حلي تقليدية بدون مينا.";
+
+document.getElementById("prod2").innerHTML="خاتم أنيق بدون مينا";
+document.getElementById("desc2").innerHTML="خاتم تقليدي بدون مينا.";
+
+document.getElementById("prod3").innerHTML="طقم بدون مينا";
+document.getElementById("desc3").innerHTML="مجموعة مجوهرات رائعة.";
+
+document.getElementById("prod4").innerHTML="خواتم متنوعة";
+document.getElementById("desc4").innerHTML="إبداع حرفي أصيل.";
+
+document.getElementById("btn1").innerHTML="اشترِ الآن";
+document.getElementById("btn2").innerHTML="اشترِ الآن";
+document.getElementById("btn3").innerHTML="اشترِ الآن";
+document.getElementById("btn4").innerHTML="اشترِ الآن";
+
+document.getElementById("aproposTexte").innerHTML="مرحبًا بكم في مجوهرات دريج. نقوم بصناعة وبيع مجوهرات حرفية مستوحاة من التراث الجزائري بتصاميم أنيقة وأصيلة.";
+
+document.getElementById("telephone").innerHTML="الهاتف : <strong>0555728176</strong>";
 }
 
 if(langue=="tz"){
-document.getElementById("titre").innerHTML="💎 Bijouterie Derridj 💎";
+document.getElementById("titre").innerHTML="💎 Bijouterie Derridj ⵣ 💎";
 document.getElementById("slogan").innerHTML="Iɣewwaṛen n leqbayel n lxir";
+document.getElementById("collections").innerHTML="Tagrumma-nneɣ";
+document.getElementById("prod1").innerHTML="Lxamsa Taqbaylit i wezzin n uɣrab";
+document.getElementById("prod1").innerHTML="Lxamsa Taqbaylit i wezzin n uɣrab";
+document.getElementById("desc1").innerHTML="Iɣewwaṛen timensayin war email.";
+
+document.getElementById("prod2").innerHTML="Taxatemt icebḥen war email";
+document.getElementById("desc2").innerHTML="Taxatemt tamensayt war email.";
+
+document.getElementById("prod3").innerHTML="Akemmus war email";
+document.getElementById("desc3").innerHTML="Tagrumma n iɣewwaṛen icebḥen.";
+
+document.getElementById("prod4").innerHTML="Taxatmin yemgaraden";
+document.getElementById("desc4").innerHTML="Asnulfu n ufus asli.";
+
+document.getElementById("btn1").innerHTML="Aɣ-d tura";
+document.getElementById("btn2").innerHTML="Aɣ-d tura";
+document.getElementById("btn3").innerHTML="Aɣ-d tura";
+document.getElementById("btn4").innerHTML="Aɣ-d tura";
+
+document.getElementById("aproposTexte").innerHTML="Ansuf yis-wen deg Bijouterie Derridj. Nesnulfu-d u nezznuz iɣewwaṛen n ufus i d-yekkan seg umezruy n Dzayer s uneɣru d tefsut.";
+
+document.getElementById("telephone").innerHTML="Tiliɣri : <strong>0555728176</strong>";
+}
 
 if(langue=="en"){
 document.getElementById("titre").innerHTML="💎 Derridj Jewelry 💎";
 document.getElementById("slogan").innerHTML="Exceptional traditional Kabyle jewelry";
-}
+document.getElementById("collections").innerHTML="Our Collections";
+document.getElementById("prod1").innerHTML="Kabyle Khamssa Wall Decoration";
+document.getElementById("desc1").innerHTML="Traditional jewelry without enamel.";
+
+document.getElementById("prod2").innerHTML="Elegant Ring Without Enamel";
+document.getElementById("desc2").innerHTML="Traditional ring without enamel.";
+
+document.getElementById("prod3").innerHTML="Enamel-Free Pack";
+document.getElementById("desc3").innerHTML="Beautiful jewelry collection.";
+
+document.getElementById("prod4").innerHTML="Different Rings";
+document.getElementById("desc4").innerHTML="Original handcrafted creation.";
+
+document.getElementById("btn1").innerHTML="Buy Now";
+document.getElementById("btn2").innerHTML="Buy Now";
+document.getElementById("btn3").innerHTML="Buy Now";
+document.getElementById("btn4").innerHTML="Buy Now";
+
+document.getElementById("aproposTexte").innerHTML="Welcome to Derridj Jewelry. We create and sell handcrafted jewelry inspired by Algerian heritage, with elegant and authentic designs.";
+document.getElementById("aproposTitre").innerHTML="About Us";
+document.getElementById("contactTitre").innerHTML="📞 Contact";
+document.getElementById("telephone").innerHTML="Phone: <strong>0555728176</strong>";
 }
 
 }
-
 </script>
 </body>
 </html>
