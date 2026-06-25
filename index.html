@@ -138,14 +138,78 @@ footer p{
     font-size:18px;
     margin:10px 0;
 }
+html{
+scroll-behavior:smooth;
+}
+
+header{
+background:linear-gradient(135deg,#000,#333);
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+.card{
+width:380px;
+background:white;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+transition:all 0.4s ease;
+}
+
+.card:hover{
+transform:translateY(-15px) scale(1.03);
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
+}
+
+.card img{
+width:100%;
+height:450px;
+object-fit:cover;
+transition:0.5s;
+}
+
+.card:hover img{
+transform:scale(1.08);
+}
+
+button{
+display:block;
+margin:20px auto;
+padding:14px 35px;
+background:linear-gradient(45deg,gold,#d4af37);
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+.prix{
+color:#b8860b;
+font-size:32px;
+font-weight:bold;
+}
+
+
 </style>
 
 </head>
 <body>
+<select id="langue" onchange="changerLangue()">
+    <option value="fr">🇫🇷 Français</option>
+    <option value="ar">🇩🇿 العربية</option>
+    <option value="tz">ⵣ Tamazight</option>
+    <option value="en">🇬🇧 English</option>
+</select>
 
 <header>
 <h1>💎 Bijouterie Derridj 💎</h1>
-<p>Bijoux traditionnels kabile d'exception</p>
+<p>Bijoux traditionnels kabyle d'exception</p>
 </header>
 
 <section class="produits">
@@ -160,7 +224,8 @@ footer p{
 <p>Bijoux traditionnels sans emaille.</p>
 <p class="prix">?????? DA</p>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
-    <button>Acheter</button>
+<button>Acheter maintenant</button>
+
 </a>
 </div>
 
@@ -170,8 +235,8 @@ footer p{
 <p>Bague traditionnels sans emaille.</p>
 <p class="prix">?????? DA</p>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
-    <button>Acheter</button>
-    
+<button>Acheter maintenant</button>
+
 </a>
 </div>
 
@@ -180,9 +245,9 @@ footer p{
 <h3>Pack sans emaille</h3>
 <p>Collection de Bijoux Sublime.</p>
 <p class="prix">?????? DA</p>
+<button onclick="ajouterAuPanier()">Ajouter au panier</button>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
-    <button>Acheter</button>
- 
+
 </a>
 </div>
 
@@ -191,9 +256,9 @@ footer p{
 <h3>Diferentes Bagues </h3>
 <p>Création artisanale originale.</p>
 <p class="prix">?????? DA</p>
+<button onclick="ajouterAuPanier()">Ajouter au panier</button>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
-    <button>Acheter</button>
-    
+
 </a>
 </div>
 
@@ -217,17 +282,36 @@ Bienvenue chez Bijouterie Derridj. Nous créons et vendons des bijoux artisanaux
 
 <p>Téléphone : <strong>0555728176</strong></p>
 
-<p>© 2026 Bijouterie Derridj - Tous droits réservés</p>
-
 </footer>
 </section>
 <script>
-let panier = 0;
 
-function ajouterAuPanier() {
-    panier++;
-    document.getElementById("nombrePanier").innerHTML = panier;
+function changerLangue() {
+
+let langue = document.getElementById("langue").value;
+
+if(langue=="fr"){
+document.getElementById("titre").innerHTML="💎 Bijouterie Derridj 💎";
+document.getElementById("slogan").innerHTML="Bijoux traditionnels kabyles d'exception";
 }
+
+if(langue=="ar"){
+document.getElementById("titre").innerHTML="💎 مجوهرات دريج 💎";
+document.getElementById("slogan").innerHTML="مجوهرات قبائلية تقليدية مميزة";
+}
+
+if(langue=="tz"){
+document.getElementById("titre").innerHTML="💎 Bijouterie Derridj 💎";
+document.getElementById("slogan").innerHTML="Iɣewwaṛen n leqbayel n lxir";
+
+if(langue=="en"){
+document.getElementById("titre").innerHTML="💎 Derridj Jewelry 💎";
+document.getElementById("slogan").innerHTML="Exceptional traditional Kabyle jewelry";
+}
+}
+
+}
+
 </script>
 </body>
 </html>
