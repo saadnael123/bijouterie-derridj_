@@ -306,10 +306,162 @@ display:block;
 text-align:right;
 padding:10px;
 }
+/*================ NAVBAR =================*/
+
+.navbar{
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:15px 40px;
+
+background:rgba(0,0,0,.95);
+
+backdrop-filter:blur(8px);
+
+box-shadow:0 5px 20px rgba(0,0,0,.3);
+
+}
+
+.logo{
+
+font-size:28px;
+
+font-weight:bold;
+
+color:gold;
+
+}
+
+.logo span{
+
+color:white;
+
+margin-left:8px;
+
+}
+
+.menu{
+
+display:flex;
+
+list-style:none;
+
+gap:30px;
+
+}
+
+.menu a{
+
+text-decoration:none;
+
+color:white;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+.menu a:hover{
+
+color:gold;
+
+}
+
+#recherche{
+
+padding:10px 15px;
+
+border-radius:25px;
+
+border:none;
+
+width:230px;
+
+outline:none;
+
+font-size:16px;
+
+}
+/* ===== Catégories ===== */
+
+.categories{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+margin-bottom:40px;
+
+}
+
+.categories button{
+
+background:#111;
+
+color:gold;
+
+border:2px solid gold;
+
+padding:12px 25px;
+
+border-radius:30px;
+
+font-size:17px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.categories button:hover{
+
+background:gold;
+
+color:black;
+
+transform:scale(1.08);
+
+}
 </style>
 
 </head>
 <body>
+<nav class="navbar">
+
+<div class="logo">
+💎 <span>Bijouterie Derridj</span>
+</div>
+
+<ul class="menu">
+<li><a href="#accueil">🏠 Accueil</a></li>
+<li><a href="#produits">💍 Collections</a></li>
+<li><a href="#apropos">ℹ️ À propos</a></li>
+<li><a href="#contact">📞 Contact</a></li>
+</ul>
+
+<input
+type="text"
+id="recherche"
+placeholder="🔍 Rechercher un bijou..."
+onkeyup="rechercherProduit()">
+
+</nav>
 <select id="langue" onchange="changerLangue()">
     <option value="fr">🇫🇷 Français</option>
     <option value="ar">🇩🇿 العربية</option>
@@ -319,18 +471,31 @@ padding:10px;
 
 <button onclick="modeSombre()">🌙 Mode sombre</button>
 
-<header>
+<header id="accueil">
 <h1 id="titre">💎 Bijouterie Derridj 💎</h1>
 <p id="slogan">Bijoux traditionnels kabyles d'exception</p>
+<p id="visiteurs">👥 Visiteurs : <span id="compteur">0</span></p>
 </header>
 
-<section class="produits">
+<section class="produits"  id="produits">
 
 <h2 id="collections">Nos Collections</h2>
+<div class="categories">
 
-<div class="container">
+<button onclick="filtrer('all')">✨ Tous</button>
 
-<div class="card">
+<button onclick="filtrer('bague')">💍 Bagues</button>
+
+<button onclick="filtrer('khamsa')">🪬 Khamsa</button>
+
+<button onclick="filtrer('pack')">🎁 Packs</button>
+
+<button onclick="filtrer('deco')">🏺 Décoration</button>
+
+</div>
+
+<div class="card" data-cat="khamsa deco">
+
 <img src="img 1.png">
 <h3 id="prod1">El Khamssa Kabyle en décoration murale</h3>
 <p id="desc1">Bijoux traditionnels sans émail.</p>
@@ -343,7 +508,8 @@ padding:10px;
 </a>
 </div>
 
-<div class="card">
+<div class="card" data-cat="bague">
+
 <img src="img 2.png">
 <h3 id="prod2">Bague élégante sans émail (Détail Avrouche)</h3>
 <p id="desc2">Bague traditionnelle sans émail.</p>
@@ -357,7 +523,8 @@ padding:10px;
 </div>
 
 
-<div class="card">
+<div class="card" data-cat="pack">
+
 <img src="img 3.png">
 <h3 id="prod3">Pack sans émail</h3>
 <p id="desc3">Collection de bijoux sublime.</p>
@@ -370,7 +537,8 @@ padding:10px;
 </a>
 </div>
 
-<div class="card">
+<div class="card" data-cat="bague">
+
 <img src="img 4.png">
 <h3 id="prod4">Différentes bagues</h3>
 <p id="desc4">Création artisanale originale.</p>
@@ -382,11 +550,11 @@ padding:10px;
 </a>
 </div>
 
-</div>
+
 
 </section>
 
-<section class="apropos">
+<section class="apropos" id="apropos">
 
 <h2 id="aproposTitre">À propos</h2>
 
@@ -413,7 +581,7 @@ Bienvenue chez Bijouterie Derridj. Nous créons et vendons des bijoux artisanaux
 
 </section>
 
-<footer>
+<footer  id="contact">
 
 <h3 id="contactTitre">📞 Contact</h3>
 
@@ -428,6 +596,17 @@ Bienvenue chez Bijouterie Derridj. Nous créons et vendons des bijoux artisanaux
 </footer>
 </section>
 <script>
+let visites = localStorage.getItem("visites");
+
+if(visites == null){
+    visites = 1;
+}else{
+    visites = Number(visites) + 1;
+}
+
+localStorage.setItem("visites", visites);
+
+document.getElementById("compteur").innerHTML = visites;
 function changerLangue() {
 
 let langue = document.getElementById("langue").value;
@@ -553,6 +732,62 @@ element.innerHTML="🤍";
 localStorage.setItem(id,"oui");
 element.innerHTML="❤️";
 }
+
+}
+
+function filtrer(categorie){
+
+let cartes=document.querySelectorAll(".card");
+
+cartes.forEach(function(carte){
+
+if(categorie=="all"){
+
+carte.style.display="block";
+
+}
+
+else{
+
+if(carte.dataset.cat.includes(categorie)){
+
+carte.style.display="block";
+
+}
+
+else{
+
+carte.style.display="none";
+
+}
+
+}
+
+});
+
+}
+
+function rechercherProduit(){
+
+let recherche=document.getElementById("recherche").value.toLowerCase();
+
+let cartes=document.querySelectorAll(".card");
+
+cartes.forEach(function(carte){
+
+let texte=carte.innerText.toLowerCase();
+
+if(texte.includes(recherche)){
+
+carte.style.display="block";
+
+}else{
+
+carte.style.display="none";
+
+}
+
+});
 
 }
 
