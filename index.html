@@ -1058,6 +1058,14 @@ slides[index].classList.add("active");
 },3000);
 function ouvrirAssistant(){
 
+// Permet d'envoyer le message en appuyant sur la touche Entrée du clavier
+document.getElementById("question").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        repondre();
+    }
+});
+
 let box=document.getElementById("assistantBox");
 
 if(box.style.display=="block"){
@@ -1068,63 +1076,137 @@ box.style.display="block";
 
 }
 
-function repondre(){
+function repondre() {
+    let question = document.getElementById("question").value;
+    if (question.trim() === "") return;
 
-let question=document.getElementById("question").value;
+    let texte = question.toLowerCase();
 
-if(question=="") return;
+    // 1. Base de connaissances de l'IA (Mots-clés -> Réponses / Images)
+    const intentions = [
+        {
+            cles: ["bonjour", "salut", "hello", "bonsoir", "salam", "azul"],
+            reponse: "👋 Azul ! Bienvenue chez Bijouterie Derridj. Comment puis-je vous aider aujourd'hui ?"
+        },
+        {
+            cles: ["prix", "combien", "coute", "coûte", "valeur", "da", "argent"],
+            reponse: "💰 Les prix de nos bijoux artisanaux sont affichés sous chaque modèle. Si un prix manque, contactez-nous directement via WhatsApp pour un devis personnalisé !"
+        },
+        {
+            cles: ["livraison", "livrer", "domicile", "wilaya", "expedition"],
+            reponse: "🚚 Nous assurons la livraison à domicile sécurisée partout en Algérie (58 wilayas)."
+        },
+        {
+            cles: ["adresse", "ou", "où", "boutique", "magasin", "emplacement", "tizi", "alger"],
+            reponse: "📍 Notre atelier/bijouterie se trouve à Tizi Ouzou. Vous trouverez le lien Google Maps exact tout en bas de la page dans la rubrique Contact !"
+        },
+        {
+            cles: ["photo khamsa", "image khamsa", "photo de la khamsa", "voir khamsa", "khamsa photo"],
+            reponse: "🪬 Voici la photo de notre El Khamssa Kabyle en décoration murale :",
+            image: "img 1.png" // Le nom de ton image 1
+        },
+        {
+            cles: ["photo bague", "image bague", "photo de la bague", "voir bague", "bague photo"],
+            reponse: "💍 Voici l'image de notre bague élégante traditionnelle (Détail Avrouche) :",
+            image: "img 2.png" // Le nom de ton image 2
+        },
+        {
+            cles: ["photo pack", "image pack", "photo du pack", "voir pack", "pack photo", "photo parure"],
+            reponse: "🎁 Voici la photo de notre pack complet sans émail :",
+            image: "img 3.png" // Le nom de ton image 3
+        },
+        {
+            cles: ["photo bijoux", "voir les bagues", "images bagues", "autre bague"],
+            reponse: "✨ Voici un aperçu de nos différentes bagues artisanales créées à la main :",
+            image: "img 4.png" // Le nom de ton image 4
+        },
+        {
+            cles: ["bague", "bagues", "avrouche", "xatem"],
+            reponse: "💍 We proposent de magnifiques bagues traditionnelles berbères. Écrivez 'photo bague' pour la voir !"
+        },
+        {
+            cles: ["khamsa", "khamsat", "خمصة", "خمسة"],
+            reponse: "🪬 Découvrez nos El Khamssa Kabyles. Écrivez 'photo khamsa' pour voir l'image !"
+        },
+        {
+            cles: ["pack", "packs", "parure", "ensemble"],
+            reponse: "🎁 Nous proposons des packs et parures assortis. Écrivez 'photo pack' pour voir l'image !"
+        },
+        {
+            cles: ["contact", "telephone", "numéro", "appel", "rejoindre", "joindre"],
+            reponse: "📞 Vous pouvez nous joindre directement par téléphone au **0555728176** ou via nos réseaux sociaux."
+        },
+        {
+            cles: ["whatsapp", "acheter", "commande", "commander", "achat"],
+            reponse: "💬 Pour commander, c'est très simple ! Cliquez sur le bouton **'Acheter maintenant'** sous le bijou de votre choix pour ouvrir une discussion WhatsApp directe avec nous."
+        },
+        {
+            cles: ["merci", "shoukran", "tanmirt"],
+            reponse: "😊 Avec grand plaisir ! Tanmirt-ik. N'hésitez pas si vous avez d'autres questions."
+        },
+        {
+            cles: ["au revoir", "bye", "a bientot", "ar tufat"],
+            reponse: "👋 À bientôt chez Bijouterie Derridj ! Passez une excellente journée."
+        }
+    ];
 
-let texte=question.toLowerCase();
+    // 2. Algorithme de correspondance (Matching)
+    let meilleureReponse = "🤖 Désolé, je n'ai pas bien compris. Écrivez par exemple 'photo bague' ou 'livraison' pour que je puisse vous aider !";
+    let imageAFFICHER = null;
+    let scoreMax = 0;
 
-let reponse="🤖 Je n'ai pas compris votre question.";
+    intentions.forEach(intention => {
+        let scoreActuel = 0;
+        intention.cles.forEach(mot => {
+            if (texte.includes(mot)) {
+                scoreActuel += 1;
+            }
+        });
 
-if(texte.includes("bonjour")||texte.includes("salut")||texte.includes("hello"))
-reponse="👋 Bonjour ! Bienvenue chez Bijouterie Derridj.";
+        if (scoreActuel > scoreMax) {
+            scoreMax = scoreActuel;
+            meilleureReponse = intention.reponse;
+            // On vérifie si cette intention contient une image à afficher
+            if (intention.image) {
+                imageAFFICHER = intention.image;
+            } else {
+                imageAFFICHER = null;
+            }
+        }
+    });
 
-else if(texte.includes("prix"))
-reponse="💰 Les prix sont affichés sous chaque bijou.";
+    let reponse = meilleureReponse;
 
-else if(texte.includes("livraison"))
-reponse="🚚 Nous livrons partout en Algérie.";
+    // ---------- Affichage ----------
 
-else if(texte.includes("contact"))
-reponse="📞 Téléphone : 0555728176";
+    let chat = document.getElementById("chat");
 
-else if(texte.includes("bague"))
-reponse="💍 Nous avons plusieurs bagues artisanales kabyles.";
+    chat.innerHTML += `<div class="user">${question}</div>`;
 
-let chat=document.getElementById("chat");
+    document.getElementById("question").value = "";
 
-chat.innerHTML+=`
-<div class="user">${question}</div>
-`;
+    chat.scrollTop = chat.scrollHeight;
 
-document.getElementById("question").value="";
+    chat.innerHTML += `<div class="typing" id="typing">🤖 Assistant écrit...</div>`;
 
-chat.scrollTop=chat.scrollHeight;
+    chat.scrollTop = chat.scrollHeight;
 
-chat.innerHTML+=`
-<div class="typing" id="typing">
-🤖 Assistant écrit...
-</div>
-`;
+    setTimeout(function() {
 
-chat.scrollTop=chat.scrollHeight;
+        document.getElementById("typing").remove();
 
-setTimeout(function(){
+        // 1. On affiche d'abord le texte de réponse du robot
+        chat.innerHTML += `<div class="bot">${reponse}</div>`;
 
-document.getElementById("typing").remove();
+        // 2. Si l'IA a trouvé une image, on l'affiche juste en dessous dans le chat
+        if (imageAFFICHER !== null) {
+            chat.innerHTML += `<div class="bot" style="background: none; padding: 0; max-width: 70%;"><img src="${imageAFFICHER}" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);"></div>`;
+        }
 
-chat.innerHTML+=`
-<div class="bot">${reponse}</div>
-`;
+        chat.scrollTop = chat.scrollHeight;
 
-chat.scrollTop=chat.scrollHeight;
-
-},1200);
-
+    }, 1000);
 }
-
 </script>
 <button id="assistantBtn" onclick="ouvrirAssistant()">🤖</button>
 
