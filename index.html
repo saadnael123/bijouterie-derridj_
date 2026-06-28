@@ -101,6 +101,7 @@ transform:translateY(-10px);
 width:100%;
 height:420px;
 object-fit:cover;
+cursor: pointer;
 }
 
 .card h3{
@@ -228,7 +229,6 @@ font-size:32px;
 font-weight:bold;
 }
 
-/* ===== Fond avec motifs berbères ===== */
 body{
 background:#f4f1ea;
 position:relative;
@@ -253,7 +253,6 @@ url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' he
 background-repeat:repeat;
 }
 
-/* ===== Animation du titre ===== */
 header h1{
 animation:brillance 3s infinite;
 }
@@ -264,7 +263,6 @@ animation:brillance 3s infinite;
 100%{transform:scale(1);}
 }
 
-/* ===== Apparition douce des cartes ===== */
 .card{
 opacity:0;
 animation:apparition 1s forwards;
@@ -299,7 +297,7 @@ color:white;
 background:#333;
 color:white;
 }
-}
+
 .favori{
 font-size:35px;
 cursor:pointer;
@@ -307,139 +305,82 @@ display:block;
 text-align:right;
 padding:10px;
 }
-/*================ NAVBAR =================*/
 
 .navbar{
-
 position:sticky;
-
 top:0;
-
 z-index:999;
-
 display:flex;
-
 justify-content:space-between;
-
 align-items:center;
-
 padding:15px 40px;
-
 background:rgba(0,0,0,.95);
-
 backdrop-filter:blur(8px);
-
 box-shadow:0 5px 20px rgba(0,0,0,.3);
-
 }
 
 .logo{
-
 font-size:28px;
-
 font-weight:bold;
-
 color:gold;
-
 }
 
 .logo span{
-
 color:white;
-
 margin-left:8px;
-
 }
 
 .menu{
-
 display:flex;
-
 list-style:none;
-
 gap:30px;
-
 }
 
 .menu a{
-
 text-decoration:none;
-
 color:white;
-
 font-weight:bold;
-
 transition:.3s;
-
 }
 
 .menu a:hover{
-
 color:gold;
-
 }
 
 #recherche{
-
 padding:10px 15px;
-
 border-radius:25px;
-
 border:none;
-
 width:230px;
-
 outline:none;
-
 font-size:16px;
-
 }
-/* ===== Catégories ===== */
 
 .categories{
-
 display:flex;
-
 justify-content:center;
-
 gap:15px;
-
 flex-wrap:wrap;
-
 margin-bottom:40px;
-
 }
 
 .categories button{
-
 background:#111;
-
 color:gold;
-
 border:2px solid gold;
-
 padding:12px 25px;
-
 border-radius:30px;
-
 font-size:17px;
-
 cursor:pointer;
-
 transition:.3s;
-
+margin: 0;
 }
 
 .categories button:hover{
-
 background:gold;
-
 color:black;
-
 transform:scale(1.08);
-
 }
-/* ===== Slider ===== */
 
 .slider{
 width:100%;
@@ -469,6 +410,77 @@ transition:opacity 1s;
 .slide.active{
 opacity:1;
 }
+
+/* STYLE DE LA CALCULATRICE */
+.calculatrice-box {
+background: white;
+max-width: 500px;
+margin: 0 auto 40px auto;
+padding: 25px;
+border-radius: 20px;
+box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+text-align: center;
+border: 2px solid gold;
+}
+.dark .calculatrice-box {
+background: #222;
+color: white;
+}
+.calculatrice-box h3 {
+margin-bottom: 15px;
+color: #b8860b;
+}
+.calculatrice-box input {
+width: 80%;
+padding: 10px;
+margin: 10px 0;
+border-radius: 10px;
+border: 1px solid #ccc;
+font-size: 16px;
+text-align: center;
+}
+.calculatrice-box input:disabled {
+background: #eee;
+color: #666;
+cursor: not-allowed;
+border: 1px solid #ddd;
+}
+.dark .calculatrice-box input:disabled {
+background: #333;
+color: #aaa;
+}
+.calculatrice-box p {
+font-size: 20px;
+font-weight: bold;
+margin-top: 15px;
+}
+
+/* STYLE DE LA LIGHTBOX */
+.lightbox {
+display: none;
+position: fixed;
+z-index: 99999;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.9);
+justify-content: center;
+align-items: center;
+}
+.lightbox img {
+max-width: 90%;
+max-height: 85%;
+border-radius: 15px;
+border: 3px solid gold;
+box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+animation: zoomIn 0.3s ease;
+}
+@keyframes zoomIn {
+from { transform: scale(0.7); opacity: 0; }
+to { transform: scale(1); opacity: 1; }
+}
+
 #assistantBtn{
 position:fixed;
 bottom:20px;
@@ -480,6 +492,7 @@ font-size:28px;
 background:gold;
 cursor:pointer;
 z-index:9999;
+margin: 0;
 }
 
 #assistantBox{
@@ -494,7 +507,6 @@ border-radius:20px;
 box-shadow:0 10px 30px rgba(0,0,0,.4);
 padding:15px;
 z-index:9999;
-display:none;
 flex-direction:column;
 }
 
@@ -541,6 +553,7 @@ padding:10px 15px;
 border-radius:18px 18px 18px 5px;
 max-width:80%;
 font-size:15px;
+color: black;
 }
 
 .typing{
@@ -552,29 +565,21 @@ font-style:italic;
 color:#666;
 }
  
- /* ========================= */
-/* VERSION TÉLÉPHONE */
-/* ========================= */
-
 @media screen and (max-width:768px){
-
 .navbar{
 flex-direction:column;
 padding:15px;
 }
-
 .menu{
 flex-wrap:wrap;
 justify-content:center;
 gap:10px;
 margin-top:10px;
 }
-
 #recherche{
 width:100%;
 margin-top:15px;
 }
-
 #langue{
 position:relative;
 top:auto;
@@ -582,59 +587,46 @@ right:auto;
 display:block;
 margin:15px auto;
 }
-
 header{
 padding:40px 15px;
 }
-
 header h1{
 font-size:34px;
 }
-
 header p{
 font-size:18px;
 }
-
 .slider{
 width:95%;
 height:220px;
 }
-
 .produits{
 padding:20px;
 }
-
 .container{
 display:flex;
 flex-direction:column;
 align-items:center;
 }
-
 .card{
 width:95%;
 max-width:360px;
 }
-
 .card img{
 height:300px;
 }
-
 .apropos{
 padding:30px 20px;
 }
-
 .avis{
 padding:30px 15px;
 }
-
 .avis-box{
 width:100%;
 }
-
 footer{
 padding:25px;
 }
-
 #assistantBtn{
 width:60px;
 height:60px;
@@ -642,7 +634,6 @@ font-size:26px;
 bottom:15px;
 right:15px;
 }
-
 #assistantBox{
 width:95%;
 height:75%;
@@ -650,43 +641,32 @@ right:2.5%;
 bottom:90px;
 border-radius:20px;
 }
-
 #chat{
 height:calc(100% - 120px);
 }
-
 #question{
 width:100%;
 padding:12px;
 font-size:16px;
 }
-
 }
- 
 </style>
-
 </head>
 <body>
+
 <nav class="navbar">
-
 <div class="logo">
-💎 <span>Bijouterie Derridj</span>
+💎 <span id="navLogo">Bijouterie Derridj</span>
 </div>
-
 <ul class="menu">
-<li><a href="#accueil">🏠 Accueil</a></li>
-<li><a href="#produits">💍 Collections</a></li>
-<li><a href="#apropos">ℹ️ À propos</a></li>
-<li><a href="#contact">📞 Contact</a></li>
+<li><a href="#accueil" id="navAccueil">🏠 Accueil</a></li>
+<li><a href="#produits" id="navCollections">💍 Collections</a></li>
+<li><a href="#apropos" id="navApropos">ℹ️ À propos</a></li>
+<li><a href="#contact" id="navContact">📞 Contact</a></li>
 </ul>
-
-<input
-type="text"
-id="recherche"
-placeholder="🔍 Rechercher un bijou..."
-onkeyup="rechercherProduit()">
-
+<input type="text" id="recherche" placeholder="🔍 Rechercher un bijou..." onkeyup="rechercherProduit()">
 </nav>
+
 <select id="langue" onchange="changerLangue()">
     <option value="fr">🇫🇷 Français</option>
     <option value="ar">🇩🇿 العربية</option>
@@ -694,7 +674,7 @@ onkeyup="rechercherProduit()">
     <option value="en">🇬🇧 English</option>
 </select>
 
-<button onclick="modeSombre()">🌙 Mode sombre</button>
+<button id="btn-sombre" onclick="modeSombre()">🌙 Mode sombre</button>
 
 <header id="accueil">
 <h1 id="titre">💎 Bijouterie Derridj 💎</h1>
@@ -703,456 +683,607 @@ onkeyup="rechercherProduit()">
 </header>
 
 <section class="slider">
-
 <div class="slides">
-<img src="img 1.png" class="slide active">
-<img src="img 2.png" class="slide">
-<img src="img 3.png" class="slide">
-<img src="img 4.png" class="slide">
+<img src="img 1.png" class="slide active" onclick="ouvrirLightbox(this.src)">
+<img src="img 2.png" class="slide" onclick="ouvrirLightbox(this.src)">
+<img src="img 3.png" class="slide" onclick="ouvrirLightbox(this.src)">
+<img src="img 4.png" class="slide" onclick="ouvrirLightbox(this.src)">
 </div>
-
 </section>
 
-<section class="produits"  id="produits">
+<!-- LA CALCULATRICE DE PRIX VERROUILLÉE -->
+<div class="calculatrice-box">
+    <h3 id="calcTitre">💰 Calculateur de Prix Direct</h3>
+    <!-- Le prix du gramme est fixé à 9500 DA et bloqué avec 'disabled' -->
+    <input type="number" id="prixGramme" value="9500" disabled>
+    <input type="number" id="poidsBijou" placeholder="Poids du bijou en grammes" oninput="calculerPrixTotal()">
+    <p id="calcResultat">Prix Total : 0 DA</p>
+</div>
 
+<section class="produits" id="produits">
 <h2 id="collections">Nos Collections</h2>
 <div class="categories">
-
-<button onclick="filtrer('all')">✨ Tous</button>
-
-<button onclick="filtrer('bague')">💍 Bagues</button>
-
-<button onclick="filtrer('khamsa')">🪬 Khamsa</button>
-
-<button onclick="filtrer('pack')">🎁 Packs</button>
-
-<button onclick="filtrer('deco')">🏺 Décoration</button>
-
+  <button id="cat-tous" onclick="filtrer('all')">✨ Tous</button>
+  <button id="cat-bagues" onclick="filtrer('bague')">💍 Bagues</button>
+  <button id="cat-khamsa" onclick="filtrer('khamsa')">🪬 Khamsa</button>
+  <button id="cat-packs" onclick="filtrer('pack')">🎁 Packs</button>
+  <button id="cat-deco" onclick="filtrer('deco')">🏺 Décoration</button>
 </div>
 
 <div class="container">
 <div class="card" data-cat="khamsa deco">
-
-<img src="img 1.png">
+<img src="img 1.png" onclick="ouvrirLightbox(this.src)">
 <h3 id="prod1">El Khamssa Kabyle en décoration murale</h3>
 <p id="desc1">Bijoux traditionnels sans émail.</p>
-<p class="prix">?????? DA</p>
+<p class="prix">au grame DA</p>
 <span id="fav1" class="favori" onclick="favori(this,'fav1')">🤍</span>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
 <button id="btn1">Acheter maintenant</button>
-
-
 </a>
 </div>
 
 <div class="card" data-cat="bague">
-
-<img src="img 2.png">
+<img src="img 2.png" onclick="ouvrirLightbox(this.src)">
 <h3 id="prod2">Bague élégante sans émail (Détail Avrouche)</h3>
 <p id="desc2">Bague traditionnelle sans émail.</p>
-<p class="prix">?????? DA</p>
+<p class="prix">au grame DA</p>
 <span id="fav2" class="favori" onclick="favori(this,'fav2')">🤍</span>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
 <button id="btn2">Acheter maintenant</button>
-
-
 </a>
 </div>
 
-
 <div class="card" data-cat="pack">
-
-<img src="img 3.png">
+<img src="img 3.png" onclick="ouvrirLightbox(this.src)">
 <h3 id="prod3">Pack sans émail</h3>
 <p id="desc3">Collection de bijoux sublime.</p>
-<p class="prix">?????? DA</p>
+<p class="prix">au grame DA</p>
 <span id="fav3" class="favori" onclick="favori(this,'fav3')">🤍</span>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
 <button id="btn3">Acheter maintenant</button>
-
-
 </a>
 </div>
 
 <div class="card" data-cat="bague">
-
-<img src="img 4.png">
+<img src="img 4.png" onclick="ouvrirLightbox(this.src)">
 <h3 id="prod4">Différentes bagues</h3>
 <p id="desc4">Création artisanale originale.</p>
-<p class="prix">?????? DA</p>
+<p class="prix">au grame DA</p>
 <span id="fav4" class="favori" onclick="favori(this,'fav4')">🤍</span>
 <a href="https://wa.me/213555728176?text=Bonjour,%20je%20souhaite%20acheter%20ce%20bijou." target="_blank">
 <button id="btn4">Acheter maintenant</button>
-
 </a>
 </div>
 </div>
-
 </section>
 
 <section class="apropos" id="apropos">
-
 <h2 id="aproposTitre">À propos</h2>
-
 <p id="aproposTexte">
 Bienvenue chez Bijouterie Derridj. Nous créons et vendons des bijoux artisanaux inspirés du patrimoine algérien, avec des designs élégants et authentiques.
 </p>
-<section class="avis">
-<h2>⭐ Avis Clients</h2>
+</section>
 
+<section class="avis">
+<h2 id="avisTitre">⭐ Avis Clients</h2>
 <div class="avis-box">
-<p>"Très beaux bijoux, travail magnifique !" ⭐⭐⭐⭐⭐</p>
+<p>"Très beaux bijoux, travail magnificent !" ⭐⭐⭐⭐⭐</p>
 <h4>- Sarah</h4>
 </div>
-
 <div class="avis-box">
 <p>"Livraison rapide et bijoux de qualité." ⭐⭐⭐⭐⭐</p>
 <h4>- Lina</h4>
 </div>
-
 <div class="avis-box">
 <p>"Je recommande fortement Bijouterie Derridj." ⭐⭐⭐⭐⭐</p>
 <h4>- Yacine</h4>
 </div>
-
 </section>
 
-<footer  id="contact">
-
+<footer id="contact">
 <h3 id="contactTitre">📞 Contact</h3>
-
 <p id="telephone">Téléphone : <strong>0555728176</strong></p>
-<a href="https://www.google.com/maps/place/DERRIDJ+Atelier-Bijouterie/@36.7135652,4.0482841,17z/data=!3m1!4b1!4m6!3m5!1s0x128dc700006d448d:0xf0063699a99849b6!8m2!3d36.7135652!4d4.0482841!16s%2Fg%2F11vz54646y?entry=ttu&g_ep=EgoyMDI2MDYyMy4wIKXMDSoASAFQAw%3D%3D"
+<a href="https://www.google.com/maps/place/DERRIDJ+Atelier-Bijouterie/@36.7135652,4.0482841,17z/data=!3m1!4b1!4m6!3m5!1s0x128dc700006d448d:0xf0063699a99849b6!8m2!3d36.7135652!4d4.0482841!16s%2Fg%2F11vz54646y?entry=ttu&g_ep=EgoyMDI2MDYyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank">
 <button id="btn5">emplacement</button>
+</a>
 <p><a href="https://www.facebook.com/profile.php?id=61559749852095" target="_blank">📘 Facebook</a></p>
-
 <p><a href="https://www.instagram.com/bijouteriederridj/" target="_blank">📸 Instagram</a></p>
-
 <p><a href="https://www.tiktok.com/@bijouterie.derridj" target="_blank">🎵 TikTok</a></p>
 </footer>
-</section>
+
+<div id="lightboxContainer" class="lightbox" onclick="fermerLightbox()">
+    <img id="lightboxImg" src="">
+</div>
+
+<button id="assistantBtn" onclick="ouvrirAssistant()">🤖</button>
+
+<div id="assistantBox">
+    <h3 id="assistantTitre">💎 Assistant Derridj</h3>
+    <div id="chat"></div>
+    <input type="text" id="question" placeholder="Posez votre question...">
+    <button id="assistantEnvoyer" onclick="repondre()">Envoyer</button>
+</div>
+
 <script>
 let visites = localStorage.getItem("visites");
-
-if(visites == null){
+if (visites == null) {
     visites = 1;
-}else{
+} else {
     visites = Number(visites) + 1;
 }
-
 localStorage.setItem("visites", visites);
 
-document.getElementById("compteur").innerHTML = visites;
+window.onload = function() {
+    document.getElementById("compteur").innerHTML = visites;
+
+    for (let i = 1; i <= 4; i++) {
+        if (localStorage.getItem("fav" + i) == "oui") {
+            document.getElementById("fav" + i).innerHTML = "❤️";
+        }
+    }
+
+    document.getElementById("question").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            repondre();
+        }
+    });
+};
+
+function ouvrirLightbox(src) {
+    document.getElementById("lightboxImg").src = src;
+    document.getElementById("lightboxContainer").style.display = "flex";
+}
+
+function fermerLightbox() {
+    document.getElementById("lightboxContainer").style.display = "none";
+}
+
+function calculerPrixTotal() {
+    let prixGramme = parseFloat(document.getElementById("prixGramme").value);
+    let poids = parseFloat(document.getElementById("poidsBijou").value);
+    let resultat = document.getElementById("calcResultat");
+    let langue = document.getElementById("langue").value;
+
+    if (isNaN(prixGramme) || isNaN(poids) || prixGramme <= 0 || poids <= 0) {
+        if(langue == "ar") resultat.innerHTML = "السعر الإجمالي : 0 د.ج";
+        else if(langue == "tz") resultat.innerHTML = "Ssumat tamatut : 0 DA";
+        else if(langue == "en") resultat.innerHTML = "Total Price: 0 DA";
+        else resultat.innerHTML = "Prix Total : 0 DA";
+        return;
+    }
+
+    let total = prixGramme * poids;
+    
+    if (langue == "ar") {
+        resultat.innerHTML = "السعر الإجمالي : " + total + " د.ج";
+    } else if (langue == "tz") {
+        resultat.innerHTML = "Ssumat tamatut : " + total + " DA";
+    } else if (langue == "en") {
+        resultat.innerHTML = "Total Price: " + total + " DA";
+    } else {
+        resultat.innerHTML = "Prix Total : " + total + " DA";
+    }
+}
+
 function changerLangue() {
+    let langue = document.getElementById("langue").value;
 
-let langue = document.getElementById("langue").value;
+    if (langue == "fr") {
+        document.getElementById("btn-sombre").innerHTML = "🌙 Mode sombre";
+        document.getElementById("recherche").placeholder = "🔍 Rechercher un bijou...";
+        document.getElementById("navAccueil").innerHTML = "🏠 Accueil";
+        document.getElementById("navCollections").innerHTML = "💍 Collections";
+        document.getElementById("navApropos").innerHTML = "ℹ️ À propos";
+        document.getElementById("navContact").innerHTML = "📞 Contact";
+        document.getElementById("titre").innerHTML = "💎 Bijouterie Derridj 💎";
+        document.getElementById("slogan").innerHTML = "Bijoux traditionnels kabyles d'exception";
+        document.getElementById("collections").innerHTML = "Nos Collections";
+        document.getElementById("cat-tous").innerHTML = "✨ Tous";
+        document.getElementById("cat-bagues").innerHTML = "💍 Bagues";
+        document.getElementById("cat-khamsa").innerHTML = "🪬 Khamsa";
+        document.getElementById("cat-packs").innerHTML = "🎁 Packs";
+        document.getElementById("cat-deco").innerHTML = "🏺 Décoration";
+        document.getElementById("prod1").innerHTML = "El Khamssa Kabyle en décoration murale";
+        document.getElementById("desc1").innerHTML = "Bijoux traditionnels sans émail.";
+        document.getElementById("prod2").innerHTML = "Bague élégante sans émail (Détail Avrouche)";
+        document.getElementById("desc2").innerHTML = "Bague traditionnelle sans émail.";
+        document.getElementById("prod3").innerHTML = "Pack sans émail";
+        document.getElementById("desc3").innerHTML = "Collection de bijoux sublime.";
+        document.getElementById("prod4").innerHTML = "Différentes bagues";
+        document.getElementById("desc4").innerHTML = "Création artisanale originale.";
+        document.getElementById("btn1").innerHTML = "Acheter maintenant";
+        document.getElementById("btn2").innerHTML = "Acheter maintenant";
+        document.getElementById("btn3").innerHTML = "Acheter maintenant";
+        document.getElementById("btn4").innerHTML = "Acheter maintenant";
+        document.getElementById("aproposTitre").innerHTML = "À propos";
+        document.getElementById("aproposTexte").innerHTML = "Bienvenue chez Bijouterie Derridj. Nous créons et vendons des bijoux artisanaux inspirés du patrimoine algérien, avec des designs élégants et authentiques.";
+        document.getElementById("avisTitre").innerHTML = "⭐ Avis Clients";
+        document.getElementById("contactTitre").innerHTML = "📞 Contact";
+        document.getElementById("telephone").innerHTML = "Téléphone : <strong>0555728176</strong>";
+        document.getElementById("btn5").innerHTML = "emplacement";
+        document.getElementById("assistantTitre").innerHTML = "💎 Assistant Derridj";
+        document.getElementById("question").placeholder = "Posez votre question...";
+        document.getElementById("assistantEnvoyer").innerHTML = "Envoyer";
+        document.getElementById("calcTitre").innerHTML = "💰 Calculateur de Prix Direct";
+        document.getElementById("poidsBijou").placeholder = "Poids du bijou en grammes";
+    }
 
-if(langue=="fr"){
-document.getElementById("titre").innerHTML="💎 Bijouterie Derridj 💎";
-document.getElementById("slogan").innerHTML="Bijoux traditionnels kabyles d'exception";
-document.getElementById("collections").innerHTML="Nos Collections";
-document.getElementById("prod1").innerHTML="El Khamssa Kabyle en décoration murale";
-document.getElementById("desc1").innerHTML="Bijoux traditionnels sans émail.";
+    if (langue == "ar") {
+        document.getElementById("btn-sombre").innerHTML = "🌙 الوضع الداكن";
+        document.getElementById("recherche").placeholder = "🔍 ابحث عن مجوهرات...";
+        document.getElementById("navAccueil").innerHTML = "🏠 الرئيسية";
+        document.getElementById("navCollections").innerHTML = "💍 مجموعاتنا";
+        document.getElementById("navApropos").innerHTML = "ℹ️ من نحن";
+        document.getElementById("navContact").innerHTML = "📞 الاتصال";
+        document.getElementById("titre").innerHTML = "💎 مجوهرات دريج 💎";
+        document.getElementById("slogan").innerHTML = "مجوهرات قبائلية تقليدية مميزة";
+        document.getElementById("collections").innerHTML = "مجموعاتنا";
+        document.getElementById("cat-tous").innerHTML = "✨ الكل";
+        document.getElementById("cat-bagues").innerHTML = "💍 خواتم";
+        document.getElementById("cat-khamsa").innerHTML = "🪬 خمسة";
+        document.getElementById("cat-packs").innerHTML = "🎁 أطقم";
+        document.getElementById("cat-deco").innerHTML = "🏺 ديكور";
+        document.getElementById("prod1").innerHTML = "الخميسة القبائلية للزينة الجدارية";
+        document.getElementById("desc1").innerHTML = "حلي تقليدية بدون مينا.";
+        document.getElementById("prod2").innerHTML = "خاتم أنيق بدون مينا (تفاصيل أفروش)";
+        document.getElementById("desc2").innerHTML = "خاتم تقليدي بدون مينا.";
+        document.getElementById("prod3").innerHTML = "طقم بدون مينا";
+        document.getElementById("desc3").innerHTML = "مجموعة مجوهرات رائعة.";
+        document.getElementById("prod4").innerHTML = "خواتم متنوعة";
+        document.getElementById("desc4").innerHTML = "إبداع حرفي أصيل.";
+        document.getElementById("btn1").innerHTML = "اشترِ الآن";
+        document.getElementById("btn2").innerHTML = "اشترِ الآن";
+        document.getElementById("btn3").innerHTML = "اشترِ الآن";
+        document.getElementById("btn4").innerHTML = "اشترِ الآن";
+        document.getElementById("aproposTitre").innerHTML = "من نحن";
+        document.getElementById("aproposTexte").innerHTML = "مرحبًا بكم في مجوهرات دريج. نقوم بصناعة وبيع مجوهرات حرفية مستوحاة من التراث الجزائري بتصاميم أنيقة وأصيلة.";
+        document.getElementById("avisTitre").innerHTML = "⭐ آراء العملاء";
+        document.getElementById("contactTitre").innerHTML = "📞 الاتصال";
+        document.getElementById("telephone").innerHTML = "الهاتف : <strong>0555728176</strong>";
+        document.getElementById("btn5").innerHTML = "الموقع الجغرافي";
+        document.getElementById("assistantTitre").innerHTML = "💎 مساعد دريج";
+        document.getElementById("question").placeholder = "اطرح سؤالك هنا...";
+        document.getElementById("assistantEnvoyer").innerHTML = "إرسال";
+        document.getElementById("calcTitre").innerHTML = "💰 حاسبة الأسعار المباشرة";
+        document.getElementById("poidsBijou").placeholder = "وزن المجوهرات بالغرام";
+    }
 
-document.getElementById("prod2").innerHTML="Bague élégante sans émail (Détail Avrouche)";
-document.getElementById("desc2").innerHTML="Bague traditionnelle sans émail.";
+    if (langue == "tz") {
+        document.getElementById("btn-sombre").innerHTML = "🌙 Tillemt lkanun";
+        document.getElementById("recherche").placeholder = "🔍 Nadi ɣef tuzzma...";
+        document.getElementById("navAccueil").innerHTML = "🏠 Asnubgeg";
+        document.getElementById("navCollections").innerHTML = "💍 Tagrumma";
+        document.getElementById("navApropos").innerHTML = "ℹ️ Awal fell-aɣ";
+        document.getElementById("navContact").innerHTML = "📞 Anermis";
+        document.getElementById("titre").innerHTML = "💎 Bijouterie Derridj ⵣ 💎";
+        document.getElementById("slogan").innerHTML = "Iɣewwaṛen n leqbayel n lxir";
+        document.getElementById("collections").innerHTML = "Tagrumma-nneɣ";
+        document.getElementById("cat-tous").innerHTML = "✨ Akk";
+        document.getElementById("cat-bagues").innerHTML = "💍 Tixatmin";
+        document.getElementById("cat-khamsa").innerHTML = "🪬 Lxamsa";
+        document.getElementById("cat-packs").innerHTML = "🎁 Ikemmusa";
+        document.getElementById("cat-deco").innerHTML = "🏺 Acebbaḥ";
+        document.getElementById("prod1").innerHTML = "Lxamsa Taqbaylit i wezzin n uɣrab";
+        document.getElementById("desc1").innerHTML = "Iɣewwaṛen timensayin war email.";
+        document.getElementById("prod2").innerHTML = "Taxatemt icebḥen war email (Avrouche)";
+        document.getElementById("desc2").innerHTML = "Taxatemt tamensayt war email.";
+        document.getElementById("prod3").innerHTML = "Akemmus war email";
+        document.getElementById("desc3").innerHTML = "Tagrumma n iɣewwaṛen icebḥen.";
+        document.getElementById("prod4").innerHTML = "Taxatmin yemgaraden";
+        document.getElementById("desc4").innerHTML = "Asnulfu n ufus asli.";
+        document.getElementById("btn1").innerHTML = "Aɣ-d tura";
+        document.getElementById("btn2").innerHTML = "Aɣ-d tura";
+        document.getElementById("btn3").innerHTML = "Aɣ-d tura";
+        document.getElementById("btn4").innerHTML = "Aɣ-d tura";
+        document.getElementById("aproposTitre").innerHTML = "Awal ɣef nneɣ";
+        document.getElementById("aproposTexte").innerHTML = "Ansuf yis-wen deg Bijouterie Derridj. Nesnulfu-d u nezznuz iɣewwaṛen n ufus i d-yekkan seg umezruy n Dzayer s uneɣru d tefsut.";
+        document.getElementById("avisTitre").innerHTML = "⭐ Tannumi n yimsafayen";
+        document.getElementById("contactTitre").innerHTML = "📞 Anermis";
+        document.getElementById("telephone").innerHTML = "Tiliɣri : <strong>0555728176</strong>";
+        document.getElementById("btn5").innerHTML = "Adgwar";
+        document.getElementById("assistantTitre").innerHTML = "💎 Amasway Derridj";
+        document.getElementById("question").placeholder = "Sesten-iyi-d kra...";
+        document.getElementById("assistantEnvoyer").innerHTML = "Azen";
+        document.getElementById("calcTitre").innerHTML = "💰 Amseknaw n Ssumat";
+        document.getElementById("poidsBijou").placeholder = "Taẓayt n tuzzma s ugram";
+    }
 
-document.getElementById("prod3").innerHTML="Pack sans émail";
-document.getElementById("desc3").innerHTML="Collection de bijoux sublime.";
-
-document.getElementById("prod4").innerHTML="Différentes bagues";
-document.getElementById("desc4").innerHTML="Création artisanale originale.";
-
-document.getElementById("btn1").innerHTML="Acheter maintenant";
-document.getElementById("btn2").innerHTML="Acheter maintenant";
-document.getElementById("btn3").innerHTML="Acheter maintenant";
-document.getElementById("btn4").innerHTML="Acheter maintenant";
-
-document.getElementById("aproposTexte").innerHTML="Bienvenue chez Bijouterie Derridj. Nous créons et vendons des bijoux artisanaux inspirés du patrimoine algérien, avec des designs élégants et authentiques.";
-document.getElementById("aproposTitre").innerHTML="À propos";
-document.getElementById("contactTitre").innerHTML="📞 Contact";
-document.getElementById("telephone").innerHTML="Téléphone : <strong>0555728176</strong>";
+    if (langue == "en") {
+        document.getElementById("btn-sombre").innerHTML = "🌙 Dark Mode";
+        document.getElementById("recherche").placeholder = "🔍 Search for jewelry...";
+        document.getElementById("navAccueil").innerHTML = "🏠 Home";
+        document.getElementById("navCollections").innerHTML = "💍 Collections";
+        document.getElementById("navApropos").innerHTML = "ℹ️ About Us";
+        document.getElementById("navContact").innerHTML = "📞 Contact";
+        document.getElementById("titre").innerHTML = "💎 Derridj Jewelry 💎";
+        document.getElementById("slogan").innerHTML = "Exceptional traditional Kabyle jewelry";
+        document.getElementById("collections").innerHTML = "Our Collections";
+        document.getElementById("cat-tous").innerHTML = "✨ All";
+        document.getElementById("cat-bagues").innerHTML = "💍 Rings";
+        document.getElementById("cat-khamsa").innerHTML = "🪬 Khamssa";
+        document.getElementById("cat-packs").innerHTML = "🎁 Packs";
+        document.getElementById("cat-deco").innerHTML = "🏺 Decoration";
+        document.getElementById("prod1").innerHTML = "Kabyle Khamssa Wall Decoration";
+        document.getElementById("desc1").innerHTML = "Traditional jewelry without enamel.";
+        document.getElementById("prod2").innerHTML = "Elegant Ring Without Enamel (Avrouche Detail)";
+        document.getElementById("desc2").innerHTML = "Traditional ring without enamel.";
+        document.getElementById("prod3").innerHTML = "Enamel-Free Pack";
+        document.getElementById("desc3").innerHTML = "Beautiful jewelry collection.";
+        document.getElementById("prod4").innerHTML = "Different Rings";
+        document.getElementById("desc4").innerHTML = "Original handcrafted creation.";
+        document.getElementById("btn1").innerHTML = "Buy Now";
+        document.getElementById("btn2").innerHTML = "Buy Now";
+        document.getElementById("btn3").innerHTML = "Buy Now";
+        document.getElementById("btn4").innerHTML = "Buy Now";
+        document.getElementById("aproposTitre").innerHTML = "About Us";
+        document.getElementById("aproposTexte").innerHTML = "Welcome to Derridj Jewelry. We create and sell handcrafted jewelry inspired by Algerian heritage, with elegant and authentic designs.";
+        document.getElementById("avisTitre").innerHTML = "⭐ Customer Reviews";
+        document.getElementById("contactTitre").innerHTML = "📞 Contact";
+        document.getElementById("telephone").innerHTML = "Phone: <strong>0555728176</strong>";
+        document.getElementById("btn5").innerHTML = "Location";
+        document.getElementById("assistantTitre").innerHTML = "💎 Derridj Assistant";
+        document.getElementById("question").placeholder = "Ask your question...";
+        document.getElementById("assistantEnvoyer").innerHTML = "Send";
+        document.getElementById("calcTitre").innerHTML = "💰 Direct Price Calculator";
+        document.getElementById("poidsBijou").placeholder = "Jewelry weight in grams";
+    }
+    calculerPrixTotal();
 }
 
-if(langue=="ar"){
-document.getElementById("titre").innerHTML="💎 مجوهرات دريج 💎";
-document.getElementById("slogan").innerHTML="مجوهرات قبائلية تقليدية مميزة";
-document.getElementById("collections").innerHTML="مجموعاتنا";
-document.getElementById("slogan").innerHTML="مجوهرات قبائلية تقليدية مميزة";
-document.getElementById("prod1").innerHTML="الخميسة القبائلية للزينة الجدارية";
-document.getElementById("desc1").innerHTML="حلي تقليدية بدون مينا.";
-
-document.getElementById("prod2").innerHTML="خاتم أنيق بدون مينا";
-document.getElementById("desc2").innerHTML="خاتم تقليدي بدون مينا.";
-
-document.getElementById("prod3").innerHTML="طقم بدون مينا";
-document.getElementById("desc3").innerHTML="مجموعة مجوهرات رائعة.";
-
-document.getElementById("prod4").innerHTML="خواتم متنوعة";
-document.getElementById("desc4").innerHTML="إبداع حرفي أصيل.";
-
-document.getElementById("btn1").innerHTML="اشترِ الآن";
-document.getElementById("btn2").innerHTML="اشترِ الآن";
-document.getElementById("btn3").innerHTML="اشترِ الآن";
-document.getElementById("btn4").innerHTML="اشترِ الآن";
-
-document.getElementById("aproposTexte").innerHTML="مرحبًا بكم في مجوهرات دريج. نقوم بصناعة وبيع مجوهرات حرفية مستوحاة من التراث الجزائري بتصاميم أنيقة وأصيلة.";
-
-document.getElementById("telephone").innerHTML="الهاتف : <strong>0555728176</strong>";
+function modeSombre() {
+    document.body.classList.toggle("dark");
 }
 
-if(langue=="tz"){
-document.getElementById("titre").innerHTML="💎 Bijouterie Derridj ⵣ 💎";
-document.getElementById("slogan").innerHTML="Iɣewwaṛen n leqbayel n lxir";
-document.getElementById("collections").innerHTML="Tagrumma-nneɣ";
-document.getElementById("prod1").innerHTML="Lxamsa Taqbaylit i wezzin n uɣrab";
-document.getElementById("prod1").innerHTML="Lxamsa Taqbaylit i wezzin n uɣrab";
-document.getElementById("desc1").innerHTML="Iɣewwaṛen timensayin war email.";
-
-document.getElementById("prod2").innerHTML="Taxatemt icebḥen war email";
-document.getElementById("desc2").innerHTML="Taxatemt tamensayt war email.";
-
-document.getElementById("prod3").innerHTML="Akemmus war email";
-document.getElementById("desc3").innerHTML="Tagrumma n iɣewwaṛen icebḥen.";
-
-document.getElementById("prod4").innerHTML="Taxatmin yemgaraden";
-document.getElementById("desc4").innerHTML="Asnulfu n ufus asli.";
-
-document.getElementById("btn1").innerHTML="Aɣ-d tura";
-document.getElementById("btn2").innerHTML="Aɣ-d tura";
-document.getElementById("btn3").innerHTML="Aɣ-d tura";
-document.getElementById("btn4").innerHTML="Aɣ-d tura";
-
-document.getElementById("aproposTexte").innerHTML="Ansuf yis-wen deg Bijouterie Derridj. Nesnulfu-d u nezznuz iɣewwaṛen n ufus i d-yekkan seg umezruy n Dzayer s uneɣru d tefsut.";
-
-document.getElementById("telephone").innerHTML="Tiliɣri : <strong>0555728176</strong>";
+function favori(element, id) {
+    if (localStorage.getItem(id) == "oui") {
+        localStorage.removeItem(id);
+        element.innerHTML = "🤍";
+    } else {
+        localStorage.setItem(id, "oui");
+        element.innerHTML = "❤️";
+    }
 }
 
-if(langue=="en"){
-document.getElementById("titre").innerHTML="💎 Derridj Jewelry 💎";
-document.getElementById("slogan").innerHTML="Exceptional traditional Kabyle jewelry";
-document.getElementById("collections").innerHTML="Our Collections";
-document.getElementById("prod1").innerHTML="Kabyle Khamssa Wall Decoration";
-document.getElementById("desc1").innerHTML="Traditional jewelry without enamel.";
-
-document.getElementById("prod2").innerHTML="Elegant Ring Without Enamel";
-document.getElementById("desc2").innerHTML="Traditional ring without enamel.";
-
-document.getElementById("prod3").innerHTML="Enamel-Free Pack";
-document.getElementById("desc3").innerHTML="Beautiful jewelry collection.";
-
-document.getElementById("prod4").innerHTML="Different Rings";
-document.getElementById("desc4").innerHTML="Original handcrafted creation.";
-
-document.getElementById("btn1").innerHTML="Buy Now";
-document.getElementById("btn2").innerHTML="Buy Now";
-document.getElementById("btn3").innerHTML="Buy Now";
-document.getElementById("btn4").innerHTML="Buy Now";
-
-document.getElementById("aproposTexte").innerHTML="Welcome to Derridj Jewelry. We create and sell handcrafted jewelry inspired by Algerian heritage, with elegant and authentic designs.";
-document.getElementById("aproposTitre").innerHTML="About Us";
-document.getElementById("contactTitre").innerHTML="📞 Contact";
-document.getElementById("telephone").innerHTML="Phone: <strong>0555728176</strong>";
-}
-}
-function modeSombre(){
-document.body.classList.toggle("dark");
+function avanzarSlide() {
+    if(slides.length === 0) return;
+    slides[index].classList.remove("active");
+    index++;
+    if (index >= slides.length) {
+        index = 0;
+    }
+    slides[index].classList.add("active");
 }
 
-function favori(element,id){
-
-if(localStorage.getItem(id)=="oui"){
-localStorage.removeItem(id);
-element.innerHTML="🤍";
-}else{
-localStorage.setItem(id,"oui");
-element.innerHTML="❤️";
+function filtrer(categorie) {
+    let cartes = document.querySelectorAll(".card");
+    cartes.forEach(function(carte) {
+        if (categorie == "all") {
+            carte.style.description = "block";
+            carte.style.display = "block";
+        } else {
+            if (carte.dataset.cat.includes(categorie)) {
+                carte.style.display = "block";
+            } else {
+                carte.style.display = "none";
+            }
+        }
+    });
 }
 
-}
-
-function filtrer(categorie){
-
-let cartes=document.querySelectorAll(".card");
-
-cartes.forEach(function(carte){
-
-if(categorie=="all"){
-
-carte.style.display="block";
-
-}
-
-else{
-
-if(carte.dataset.cat.includes(categorie)){
-
-carte.style.display="block";
-
-}
-
-else{
-
-carte.style.display="none";
-
-}
-
-}
-
-});
-
-}
-
-function rechercherProduit(){
-
-let recherche=document.getElementById("recherche").value.toLowerCase();
-
-let cartes=document.querySelectorAll(".card");
-
-cartes.forEach(function(carte){
-
-let texte=carte.innerText.toLowerCase();
-
-if(texte.includes(recherche)){
-
-carte.style.display="block";
-
-}else{
-
-carte.style.display="none";
-
-}
-
-});
-
-}
-
-window.onload=function(){
-
-for(let i=1;i<=4;i++){
-
-if(localStorage.getItem("fav"+i)=="oui"){
-document.getElementById("fav"+i).innerHTML="❤️";
-}
-
-}
-
+function rechercherProduit() {
+    let recherche = document.getElementById("recherche").value.toLowerCase();
+    let cartes = document.querySelectorAll(".card");
+    cartes.forEach(function(carte) {
+        let texte = carte.innerText.toLowerCase();
+        if (texte.includes(recherche)) {
+            carte.style.display = "block";
+        } else {
+            carte.style.display = "none";
+        }
+    });
 }
 
 let index = 0;
-
 const slides = document.querySelectorAll(".slide");
+setInterval(avanzarSlide, 3000);
 
-setInterval(function(){
+function ouvrirAssistant() {
+    let box = document.getElementById("assistantBox");
+    let chat = document.getElementById("chat");
+    let langueActuelle = document.getElementById("langue").value;
 
-slides[index].classList.remove("active");
-
-index++;
-
-if(index >= slides.length){
-index = 0;
-}
-
-slides[index].classList.add("active");
-
-},3000);
-function ouvrirAssistant(){
-
-// Permet d'envoyer le message en appuyant sur la touche Entrée du clavier
-document.getElementById("question").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        repondre();
+    if (box.style.display === "flex") {
+        box.style.display = "none";
+    } else {
+        box.style.display = "flex";
+        
+        if (chat.innerHTML.trim() === "") {
+            const bienvenue = {
+                fr: "👋 Azul ! Bienvenue chez Bijouterie Derridj. Cliquez sur une question courante ou écrivez-moi directement ! 😊",
+                ar: "👋 أزول! مرحبًا بكم في مجوهرات دريج. انقر على سؤال شائع أو اكتب لي مباشرة! 😊",
+                tz: "👋 Azul ! Ansuf yis-wen ɣer Bijouterie Derridj. Sdedd-ed ɣef usten neɣ uru-iyi-d tura ! 😊",
+                en: "👋 Azul! Welcome to Derridj Jewelry. Click on a common question or write to me directly! 😊"
+            };
+            chat.innerHTML += `<div class="bot">${bienvenue[langueActuelle]}</div>`;
+            afficherSuggestions();
+        }
     }
-});
-
-let box=document.getElementById("assistantBox");
-
-if(box.style.display=="block"){
-box.style.display="none";
-}else{
-box.style.display="block";
 }
 
+function afficherSuggestions() {
+    let chat = document.getElementById("chat");
+    let langueActuelle = document.getElementById("langue").value;
+
+    const labels = {
+        fr: { prix: "💰 Les Prix", liv: "🚚 Livraison", adr: "📍 Adresse", img: "📸 Voir les Photos" },
+        ar: { prix: "💰 الأسعار", liv: "🚚 التوصيل", adr: "📍 الموقع", img: "📸 رؤية الصور" },
+        tz: { prix: "💰 Ssumat", liv: "🚚 Azenzi", adr: "📍 Taseddast", img: "📸 Wali Tifwatin" },
+        en: { prix: "💰 Prices", liv: "🚚 Delivery", adr: "📍 Location", img: "📸 See Photos" }
+    };
+
+    const questions = {
+        fr: { prix: "💰 Combien coûtent vos bijoux ?", liv: "🚚 Faites-vous la livraison ?", adr: "📍 Où se trouve votre boutique ?", img: "📸 Je veux voir les photos" },
+        ar: { prix: "السعر كم بكم", liv: "توصيل بريد", adr: "اين العنوان المحل", img: "صورة صور" },
+        tz: { prix: "Ssumat n tuzzma", liv: "Neznuzay azenzi", adr: "Axxam n tuzzma", img: "photo image voir" },
+        en: { prix: "How much does it cost?", liv: "Do you offer delivery?", adr: "Where is your workshop?", img: "Show me pictures" }
+    };
+
+    let s = labels[langueActuelle];
+    let q = questions[langueActuelle];
+
+    let suggestionsHTML = `
+        <div class="bot-suggestions" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:5px;">
+            <button onclick="simulerQuestion('${q.prix}')" style="margin:0; padding:6px 12px; font-size:13px; background:#fff; border:1px solid gold; color:#111; border-radius:15px; cursor:pointer;">${s.prix}</button>
+            <button onclick="simulerQuestion('${q.liv}')" style="margin:0; padding:6px 12px; font-size:13px; background:#fff; border:1px solid gold; color:#111; border-radius:15px; cursor:pointer;">${s.liv}</button>
+            <button onclick="simulerQuestion('${q.adr}')" style="margin:0; padding:6px 12px; font-size:13px; background:#fff; border:1px solid gold; color:#111; border-radius:15px; cursor:pointer;">${s.adr}</button>
+            <button onclick="simulerQuestion('${q.img}')" style="margin:0; padding:6px 12px; font-size:13px; background:#fff; border:1px solid gold; color:#111; border-radius:15px; cursor:pointer;">${s.img}</button>
+        </div>
+    `;
+    chat.innerHTML += suggestionsHTML;
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function simulerQuestion(texteQuestion) {
+    document.getElementById("question").value = texteQuestion;
+    repondre();
 }
 
 function repondre() {
-    let question = document.getElementById("question").value;
+    let inputField = document.getElementById("question");
+    let question = inputField.value;
     if (question.trim() === "") return;
 
-    let texte = question.toLowerCase();
+    let langueActuelle = document.getElementById("langue").value;
 
-    // 1. Base de connaissances de l'IA (Mots-clés -> Réponses / Images)
+    let texte = question.toLowerCase()
+                        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                        .replace(/[s]$/, "");
+
     const intentions = [
         {
-            cles: ["bonjour", "salut", "hello", "bonsoir", "salam", "azul"],
-            reponse: "👋 Azul ! Bienvenue chez Bijouterie Derridj. Comment puis-je vous aider aujourd'hui ?"
+            cles: ["bonjour", "salut", "hello", "bonsoir", "salam", "azul", "مرحبا", "سلام"],
+            reponse: {
+                fr: "👋 Azul ! Bienvenue chez Bijouterie Derridj. Comment puis-je vous aider aujourd'hui ?",
+                ar: "👋 أزول! مرحبًا بكم في مجوهرات دريج. كيف يمكنني مساعدتكم اليوم؟",
+                tz: "👋 Azul ! Ansuf yis-wen ɣer Bijouterie Derridj. Amek i d-as-en-yall ɣass-a ?",
+                en: "👋 Azul! Welcome to Derridj Jewelry. How can I help you today?"
+            }
         },
         {
-            cles: ["prix", "combien", "coute", "coûte", "valeur", "da", "argent"],
-            reponse: "💰 Les prix de nos bijoux artisanaux sont affichés sous chaque modèle. Si un prix manque, contactez-nous directement via WhatsApp pour un devis personnalisé !"
+            cles: ["prix", "combien", "coute", "valeur", "da", "argent", "tarif", "السعر", "كم", "بكم"],
+            reponse: {
+                fr: "💰 Les tarifs de nos créations artisanales sont indiqués sous chaque modèle dans la vitrine. Si un prix n'apparaît pas, contactez-nous sur WhatsApp pour un devis personnalisé !",
+                ar: "💰 أسعار منتجاتنا الحرفية معروضة تحت كل موديل. إذا كان السعر غير متوفر، اتصل بنا مباشرة عبر الواتساب للحصول على سعر مخصص!",
+                tz: "💰 Ssumat n tuzzma-nneɣ llan ddaw yal amudil. Ma yella ulac ssumat, anerm-aɣ-d ɣef WhatsApp i wakken ad k-id-nefki ssumat inek !",
+                en: "💰 The prices of our handcrafted creations are displayed under each model. If a price is missing, contact us directly on WhatsApp for a personalized quote!"
+            }
         },
         {
-            cles: ["livraison", "livrer", "domicile", "wilaya", "expedition"],
-            reponse: "🚚 Nous assurons la livraison à domicile sécurisée partout en Algérie (58 wilayas)."
+            cles: ["livraison", "livrer", "domicile", "wilaya", "expedition", "envoi", "توصيل", "بريد"],
+            reponse: {
+                fr: "🚚 Nous assurons une livraison à domicile sécurisée et rapide sur l'ensemble des 58 wilayas d'Algérie !",
+                ar: "🚚 نحن نضمن توصيلًا آمنًا وسريعًا إلى المنزل في جميع الولايات الـ 58 في الجزائر!",
+                tz: "🚚 Neznuzay azenzi ɣer wexxam s tɣellist d tazzla ɣef 58 n twilayin n Dzayer !",
+                en: "🚚 We provide safe and fast home delivery across all 58 wilayas of Algeria!"
+            }
         },
         {
-            cles: ["adresse", "ou", "où", "boutique", "magasin", "emplacement", "tizi", "alger"],
-            reponse: "📍 Notre atelier/bijouterie se trouve à Tizi Ouzou. Vous trouverez le lien Google Maps exact tout en bas de la page dans la rubrique Contact !"
+            cles: ["adresse", "ou", "boutique", "magasin", "emplacement", "tizi", "alger", "situe", "اين", "العنوان", "المحل"],
+            reponse: {
+                fr: "📍 Notre atelier artisanal et espace d'exposition se situent à Tizi Ouzou. Vous pouvez visualiser le repère Google Maps en bas de page dans la section Contact !",
+                ar: "📍 يقع ورشتنا الحرفية وقاعة العرض في تيزي وزو. يمكنك رؤية موقعنا على Google Maps أسفل الصفحة في قسم الاتصال!",
+                tz: "📍 Axxam n tuzzma-nneɣ d wadeg n ubecced llan deg Tizi Wezzu. Tzemred ad twaliḍ taseddast n Google Maps ddaw uqbal deg weḥric n Unermis !",
+                en: "📍 Our handcrafted workshop and showroom are located in Tizi Ouzou. You can view the exact Google Maps location at the bottom of the page in the Contact section!"
+            }
         },
         {
-            cles: ["photo khamsa", "image khamsa", "photo de la khamsa", "voir khamsa", "khamsa photo"],
-            reponse: "🪬 Voici la photo de notre El Khamssa Kabyle en décoration murale :",
-            image: "img 1.png" // Le nom de ton image 1
+            cles: ["khamsa", "خمصة", "خمسة", "mural"],
+            reponse: {
+                fr: "🪬 Voici l'aperçu visuel de notre El Khamssa Kabyle conçue pour la décoration murale :",
+                ar: "🪬 إليكم العرض المرئي للخميسة القبائلية المخصصة لتزيين الجدران:",
+                tz: "🪬 Atan ubecced n Lxamsa Taqbaylit i wezzin n uɣrab :",
+                en: "🪬 Here is the visual preview of our Kabyle Khamssa designed for wall decoration:"
+            },
+            image: "img 1.png"
         },
         {
-            cles: ["photo bague", "image bague", "photo de la bague", "voir bague", "bague photo"],
-            reponse: "💍 Voici l'image de notre bague élégante traditionnelle (Détail Avrouche) :",
-            image: "img 2.png" // Le nom de ton image 2
+            cles: ["bague", "xatem", "avrouche", "خاتم", "الخاتم"],
+            reponse: {
+                fr: "💍 Voici le rendu de notre bague élégante traditionnelle (Détail travaillé style Avrouche) :",
+                ar: "💍 إليكم شكل خاتمنا التقليدي الأنيق (تفاصيل متقنة على طراز أفروش):",
+                tz: "💍 Atan ubecced n txatemt-nneɣ icebḥen (Avrouche) :",
+                en: "💍 Here is our elegant traditional ring (Detailed Avrouche style craftsmanship):"
+            },
+            image: "img 2.png"
         },
         {
-            cles: ["photo pack", "image pack", "photo du pack", "voir pack", "pack photo", "photo parure"],
-            reponse: "🎁 Voici la photo de notre pack complet sans émail :",
-            image: "img 3.png" // Le nom de ton image 3
+            cles: ["pack", "parure", "ensemble", "طقم", "الكل"],
+            reponse: {
+                fr: "🎁 Voici la photographie de notre coffret d'exception (Pack complet sans émail) :",
+                ar: "🎁 إليكم صورة طقمنا المميز (علبة كاملة بدون مينا):",
+                tz: "🎁 Atan ubecced n ukemmus-nneɣ n lxir (Akemmus war email) :",
+                en: "🎁 Here is the photograph of our exceptional set (Complete enamel-free pack):"
+            },
+            image: "img 3.png"
         },
         {
-            cles: ["photo bijoux", "voir les bagues", "images bagues", "autre bague"],
-            reponse: "✨ Voici un aperçu de nos différentes bagues artisanales créées à la main :",
-            image: "img 4.png" // Le nom de ton image 4
+            cles: ["photo", "image", "voir", "modele", "collection", "afficher", "صورة", "صور"],
+            reponse: {
+                fr: "✨ Voici un extrait de nos créations de bagues et joyaux berbères façonnés manuellement dans notre atelier :",
+                ar: "✨ إليكم مقتطفات من إبداعاتنا من الخواتم والمجوهرات البربرية المصنوعة يدويًا في ورشتنا:",
+                tz: "✨ Atan ubecced n tuzzma n txatmin d iɣewwaṛen n leqbayel i nexdem s ufus-nneɣ :",
+                en: "✨ Here is a selection of our handcrafted Berber rings and jewelry made in our workshop:"
+            },
+            image: "img 4.png"
         },
         {
-            cles: ["bague", "bagues", "avrouche", "xatem"],
-            reponse: "💍 We proposent de magnifiques bagues traditionnelles berbères. Écrivez 'photo bague' pour la voir !"
+            cles: ["contact", "telephone", "numero", "appel", "joindre", "الهاتف", "رقم"],
+            reponse: {
+                fr: "📞 Notre équipe reste disponible par téléphone au **0555728176** ou via nos réseaux sociaux !",
+                ar: "📞 فريقنا متوفر عبر الهاتف على الرقم **0555728176** أو عبر حساباتنا على مواقع التواصل الاجتماعي!",
+                tz: "📞 Tarbaat-nneɣ tella da s tiliɣri ɣef **0555728176** neɣ s zeṭṭat n tmetti nneɣ !",
+                en: "📞 Our team remains available by phone at **0555728176** or through our social media networks!"
+            }
         },
         {
-            cles: ["khamsa", "khamsat", "خمصة", "خمسة"],
-            reponse: "🪬 Découvrez nos El Khamssa Kabyles. Écrivez 'photo khamsa' pour voir l'image !"
+            cles: ["whatsapp", "acheter", "commande", "commander", "achat", "شراء", "طلب"],
+            reponse: {
+                fr: "💬 C'est très simple ! Pour commander un bijou, cliquez directement sur son bouton doré **'Acheter maintenant'** pour ouvrir WhatsApp.",
+                ar: "💬 الأمر في غاية البساطة! لطلب أي مجوهرات، اضغط مباشرة على الزر الذهبي **'اشترِ الآن'** لفتح الواتساب.",
+                tz: "💬 S tewwura ! I wakken ad t-aɣeḍ tuzzma, tseddaḍ ɣef tqeffalt n ddheb **'Aɣ-d tura'** i wakken ad d-teldiḍ WhatsApp.",
+                en: "💬 It's very simple! To order a piece of jewelry, click directly on its golden **'Buy Now'** button to open WhatsApp."
+            }
         },
         {
-            cles: ["pack", "packs", "parure", "ensemble"],
-            reponse: "🎁 Nous proposons des packs et parures assortis. Écrivez 'photo pack' pour voir l'image !"
+            cles: ["merci", "shoukran", "tanmirt", "شكرا"],
+            reponse: {
+                fr: "😊 Avec grand plaisir ! Tanmirt-ik / Tanmirt-im. N'hésitez pas si vous avez besoin d'autre chose !",
+                ar: "😊 بكل سرور! شكرًا لك. لا تتردد إذا كنت بحاجة إلى أي شيء آخر!",
+                tz: "😊 S lfeṛḥ ameqran ! Tanmirt-ik / Tanmirt-im. Ma yella tesriḍ kra nniḍen, ur tuggad ara !",
+                en: "😊 With great pleasure! Thank you. Feel free to ask if you need anything else!"
+            }
         },
         {
-            cles: ["contact", "telephone", "numéro", "appel", "rejoindre", "joindre"],
-            reponse: "📞 Vous pouvez nous joindre directement par téléphone au **0555728176** ou via nos réseaux sociaux."
-        },
-        {
-            cles: ["whatsapp", "acheter", "commande", "commander", "achat"],
-            reponse: "💬 Pour commander, c'est très simple ! Cliquez sur le bouton **'Acheter maintenant'** sous le bijou de votre choix pour ouvrir une discussion WhatsApp directe avec nous."
-        },
-        {
-            cles: ["merci", "shoukran", "tanmirt"],
-            reponse: "😊 Avec grand plaisir ! Tanmirt-ik. N'hésitez pas si vous avez d'autres questions."
-        },
-        {
-            cles: ["au revoir", "bye", "a bientot", "ar tufat"],
-            reponse: "👋 À bientôt chez Bijouterie Derridj ! Passez une excellente journée."
+            cles: ["au revoir", "bye", "a bientot", "ar tufat", "الى اللقاء"],
+            reponse: {
+                fr: "👋 À bientôt chez Bijouterie Derridj ! Passez une excellente fin de journée.",
+                ar: "👋 نراكم قريبًا في مجوهرات دريج! نتمنى لكم نهاية يوم سعيدة.",
+                tz: "👋 Ar tufat ɣer Bijouterie Derridj ! Ar tikkelt nniḍen, iḍ ameggaz.",
+                en: "👋 See you soon at Derridj Jewelry! Have an excellent rest of your day."
+            }
         }
     ];
 
-    // 2. Algorithme de correspondance (Matching)
-    let meilleureReponse = "🤖 Désolé, je n'ai pas bien compris. Écrivez par exemple 'photo bague' ou 'livraison' pour que je puisse vous aider !";
-    let imageAFFICHER = null;
+    const erreursLangue = {
+        fr: "🤖 Désolé, je ne parviens pas à décoder votre requête. Je suis encore en apprentissage ! Appelez-nous au 0555728176.",
+        ar: "🤖 عذرًا، لم أفهم طلبك جيدًا. ما زلت في مرحلة التعلم! يمكنك الاتصال بنا مباشرة على 0555728176.",
+        tz: "🤖 Sumeḥ-as, ur rmeɣ ara awal-ik. Mazal-iyi ttababaɣ ! Tzemred ad aɣ-d-tiliɣred ɣef 0555728176.",
+        en: "🤖 Sorry, I didn't quite understand your request. I am still learning! You can call us directly at 0555728176."
+    };
+
+    let meilleureReponse = erreursLangue[langueActuelle];
+    let imageAAfficher = null;
     let scoreMax = 0;
 
     intentions.forEach(intention => {
@@ -1165,64 +1296,44 @@ function repondre() {
 
         if (scoreActuel > scoreMax) {
             scoreMax = scoreActuel;
-            meilleureReponse = intention.reponse;
-            // On vérifie si cette intention contient une image à afficher
-            if (intention.image) {
-                imageAFFICHER = intention.image;
-            } else {
-                imageAFFICHER = null;
-            }
+            meilleureReponse = intention.reponse[langueActuelle];
+            imageAAfficher = intention.image ? intention.image : null;
         }
     });
 
-    let reponse = meilleureReponse;
-
-    // ---------- Affichage ----------
-
     let chat = document.getElementById("chat");
-
     chat.innerHTML += `<div class="user">${question}</div>`;
-
-    document.getElementById("question").value = "";
-
+    inputField.value = "";
     chat.scrollTop = chat.scrollHeight;
 
-    chat.innerHTML += `<div class="typing" id="typing">🤖 Assistant écrit...</div>`;
+    const ecritureLangue = {
+        fr: "🤖 Assistant écrit...",
+        ar: "🤖 المساعد يكتب...",
+        tz: "🤖 Amasway yura...",
+        en: "🤖 Assistant is typing..."
+    };
 
+    chat.innerHTML += `<div class="typing" id="typing">${ecritureLangue[langueActuelle]}</div>`;
     chat.scrollTop = chat.scrollHeight;
 
     setTimeout(function() {
+        let typingIndicator = document.getElementById("typing");
+        if(typingIndicator) typingIndicator.remove();
 
-        document.getElementById("typing").remove();
+        chat.innerHTML += `<div class="bot">${meilleureReponse}</div>`;
 
-        // 1. On affiche d'abord le texte de réponse du robot
-        chat.innerHTML += `<div class="bot">${reponse}</div>`;
-
-        // 2. Si l'IA a trouvé une image, on l'affiche juste en dessous dans le chat
-        if (imageAFFICHER !== null) {
-            chat.innerHTML += `<div class="bot" style="background: none; padding: 0; max-width: 70%;"><img src="${imageAFFICHER}" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);"></div>`;
+        if (imageAAfficher !== null) {
+            chat.innerHTML += `
+                <div class="bot" style="background: none; padding: 0; max-width: 75%; margin-top: -5px;">
+                    <img src="${imageAAfficher}" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); border: 2px solid gold;">
+                </div>
+            `;
         }
 
+        afficherSuggestions();
         chat.scrollTop = chat.scrollHeight;
-
     }, 1000);
 }
 </script>
-<button id="assistantBtn" onclick="ouvrirAssistant()">🤖</button>
-
-<div id="assistantBox">
-
-<h3>💎 Assistant Derridj</h3>
-
-<div id="chat"></div>
-
-<input
-type="text"
-id="question"
-placeholder="Posez votre question...">
-
-<button onclick="repondre()">Envoyer</button>
-
-</div>
 </body>
 </html>
